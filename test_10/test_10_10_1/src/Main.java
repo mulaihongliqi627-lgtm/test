@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) {
         int []nums = new int []{2,3,1,2,4,3};
@@ -5,7 +8,25 @@ public class Main {
         System.out.println(result);
     }
 
-    public static int minSubArrayLen(int target, int[] nums) {
+
+
+        public static int lengthOfLongestSubstring(String s) {
+            Set<Character> set = new HashSet<>();
+            int left = 0, right = 0, len = 0;
+            for (; right < s.length(); right++) {
+                char ch = s.charAt(right);
+                //遇到重复字符,让left移动到第一个重复字符的右边
+                while (set.contains(ch)) {
+                    set.remove(s.charAt(left++));
+                }
+                set.add(ch);
+                len = Math.max(len, right - left + 1);
+            }
+            return len;
+        }
+
+
+        public static int minSubArrayLen(int target, int[] nums) {
         int left = 0;
         int right = 0;
         int len = Integer.MAX_VALUE,sum = 0;
