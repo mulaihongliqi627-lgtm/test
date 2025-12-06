@@ -5,6 +5,21 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class firstTest {
+    public WebDriver driver = null;
+    public void start(){
+        //1.打开驱动
+        WebDriverManager.chromedriver().setup();
+        //2.添加对应浏览器配置
+        ChromeOptions options = new ChromeOptions();
+        //允许访问所有链接
+        options.addArguments("--remote-allow-origins=*");
+
+        driver = new ChromeDriver(options);
+    }
+    //断开驱动
+    public void stop(){
+        driver.quit();
+    }
     public void searchTest() throws InterruptedException {
         //下载浏览器驱动
         WebDriverManager.chromedriver().setup();
@@ -25,6 +40,5 @@ public class firstTest {
         //关闭浏览器
         Thread.sleep(1000);
         driver.quit();
-
     }
 }

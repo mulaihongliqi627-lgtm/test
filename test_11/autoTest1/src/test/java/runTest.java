@@ -1,6 +1,6 @@
 public class runTest {
     public static void main(String[] args) throws InterruptedException {
-        firstTest test = new firstTest();
-        test.searchTest();
+        Test_3 test = new Test_3();
+        test.test02();
     }
 }

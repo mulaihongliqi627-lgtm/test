@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Demo3 {
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         Scanner sc = new Scanner(System.in);
         long a = sc.nextLong();
         long b = sc.nextLong();
@@ -25,5 +27,9 @@ public class Demo3 {
             }
         }
         System.out.println(days);
+    }
+
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
     }
 }
