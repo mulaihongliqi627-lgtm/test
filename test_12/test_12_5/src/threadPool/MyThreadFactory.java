@@ -1,12 +1,15 @@
 package threadPool;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MyThreadFactory implements ThreadFactory {
     //重写newThread方法，自定义创建的线程
+    //定义一个原子自增数
+    private final AtomicInteger threadNumber = new AtomicInteger(1);
     @Override
     public Thread newThread(Runnable r) {
-        Thread t = new Thread(r,"线程-1");//命名
+        Thread t = new Thread(r,"线程-" + threadNumber.getAndIncrement());//命名
         t.setDaemon(false);//设置为前台线程
         System.out.println(t.getName() + "已创建");
         return t;
@@ -28,6 +31,17 @@ public class MyThreadFactory implements ThreadFactory {
                 workQueue,
                 new MyThreadFactory(),
                 new ThreadPoolExecutor.CallerRunsPolicy());
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
+        pool.submit(task);
         pool.submit(task);
     }
 }
